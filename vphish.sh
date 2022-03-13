@@ -73,7 +73,7 @@ banner() {
 		${ORANGE}          | |                                
 		${ORANGE}          |_|                ${RED}Version : 1.0
 
-		${GREEN}[${WHITE}-${GREEN}]${CYAN} Tool Powered By Viraj L R${WHITE}
+		${GREEN}[${WHITE}-${GREEN}]${CYAN} Tool Powered By Viraj LR${WHITE}
 	EOF
 }
 
@@ -176,7 +176,7 @@ about() {
 	{ clear; banner; echo; }
 	cat <<- EOF
 		${GREEN}Author   ${RED}:  ${ORANGE}Viraj LR ${RED}[ ${ORANGE}***VLR*** ${RED}]
-		${GREEN}Github   ${RED}:  ${CYAN}https://github.com/Viraj LR
+		${GREEN}Github   ${RED}:  ${CYAN}https://github.com/VirajLR
 		${GREEN}Version  ${RED}:  ${ORANGE}1.0
 
 		${RED}Warning:${WHITE}
