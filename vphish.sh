@@ -73,7 +73,7 @@ banner() {
 		${ORANGE}          | |                                
 		${ORANGE}          |_|                ${RED}Version : 1.0
 
-		${GREEN}[${WHITE}-${GREEN}]${CYAN} Tool Powered By Viraj L Rathnayake${WHITE}
+		${GREEN}[${WHITE}-${GREEN}]${CYAN} Tool Powered By Viraj L R${WHITE}
 	EOF
 }
 
