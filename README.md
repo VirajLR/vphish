@@ -35,7 +35,7 @@ It only demonstrates "how phishing works". <b>You shall not misuse the informati
 
 - Just, Clone this repository -
 ```
-$ git clone git://github.com/VirajLR/vphish.git
+$ git clone https://github.com/VirajLR/vphish.git
 ```
 
 - Change to cloned directory and run `vphish.sh` -
