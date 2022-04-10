@@ -28,6 +28,7 @@ It only demonstrates "how phishing works". <b>You shall not misuse the informati
 - Docker support (checkout `docker-legacy` branch)
 - Multiple tunneling options
 - Localhost
+- Ngrok
 - Cloudflare Supported
 
 
@@ -41,7 +42,7 @@ $ git clone https://github.com/VirajLR/vphish.git
 - Change to cloned directory and run `setup.sh` -
 ```
 $ cd vphish
-$ bash setup.sh
+$ bash setup.sh 👈 please run this first time only 
 ```
 
 - Finally run 👇👇👇 - 
