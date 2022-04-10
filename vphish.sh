@@ -53,6 +53,38 @@ if [[ -e ".cld.log" ]]; then
 fi
 
 ## Script termination
+exit_on_signal_SIGINT() {
+    { printf "\n\n%s\n\n" "${RED}[${WHITE}!${RED}]${RED} Program Interrupted." 2>&1; reset_color; }
+    exit 0
+}
+
+exit_on_signal_SIGTERM() {
+    { printf "\n\n%s\n\n" "${RED}[${WHITE}!${RED}]${RED} Program Terminated." 2>&1; reset_color; }
+    exit 0
+}
+
+trap exit_on_signal_SIGINT SIGINT
+trap exit_on_signal_SIGTERM SIGTERM
+
+## Reset terminal colors
+reset_color() {
+	tput sgr0   # reset attributes
+	tput op     # reset color
+    return
+}
+
+## Kill already running process
+kill_pid() {
+	if [[ `pidof php` ]]; then
+		killall php > /dev/null 2>&1
+	fi
+	if [[ `pidof ngrok` ]]; then
+		killall ngrok > /dev/null 2>&1&> /dev/null & spin
+	fi
+	if [[ `pidof cloudflared` ]]; then
+		killall cloudflared > /dev/null 2>&1&> /dev/null & spin
+	fi
+}
 
 
 ## Banner
