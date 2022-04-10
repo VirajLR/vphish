@@ -42,7 +42,7 @@ $ git clone https://github.com/VirajLR/vphish.git
 - Change to cloned directory and run `setup.sh` -
 ```
 $ cd vphish
-$ bash setup.sh 👈 please run this first time only 
+$ bash setup.sh 👈 please run this first launch only 
 ```
 
 - Finally run 👇👇👇 - 
