@@ -114,107 +114,13 @@ banner_small() {
 	EOF
 }
 
-## Dependencies
-dependencies() {
-	echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing required packages..." &> /dev/null & spin
 
-    if [[ -d "/data/data/com.termux/files/home" ]]; then
-        if [[ `command -v proot` ]]; then
-            printf ''
-        else
-			echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing package : ${ORANGE}proot${CYAN}"${WHITE}
-            pkg install proot resolv-conf -y
-        fi
-    fi
-
-	if [[ `command -v php` && `command -v wget` && `command -v curl` && `command -v unzip` ]]; then
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${GREEN} Packages already installed."
-	else
-		pkgs=(php curl wget unzip)
-		for pkg in "${pkgs[@]}"; do
-			type -p "$pkg" &>/dev/null & spin || {
-				echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing package : ${ORANGE}$pkg${CYAN}"${WHITE}
-				if [[ `command -v pkg` ]]; then
-					pkg install "$pkg" -y
-				elif [[ `command -v apt` ]]; then
-					apt install "$pkg" -y
-				elif [[ `command -v apt-get` ]]; then
-					apt-get install "$pkg" -y
-				elif [[ `command -v pacman` ]]; then
-					sudo pacman -S "$pkg" --noconfirm
-				elif [[ `command -v dnf` ]]; then
-					sudo dnf -y install "$pkg"
-				else
-					echo -e "\n${RED}[${WHITE}!${RED}]${RED} Unsupported package manager, Install packages manually."
-					{ reset_color; exit 1; }
-				fi
-			}
-		done
-	fi
-
-}
-
-## Download Cloudflared
-download_cloudflared() {
-	url="$1"
-	file=`basename $url`
-	if [[ -e "$file" ]]; then
-		rm -rf "$file"
-	fi
-	wget --no-check-certificate "$url" > /dev/null 2>&1 & spin
-	if [[ -e "$file" ]]; then
-		mv -f "$file" .server/cloudflared > /dev/null 2>&1 & spin
-		chmod +x .server/cloudflared > /dev/null 2>&1 & spin
-	else
-		echo -e "\n${RED}[${WHITE}!${RED}]${RED} Error occured, Install Cloudflared manually."
-		{ reset_color; exit 1; }
-	fi
-}
-
-## Install Cloudflared
-install_cloudflared() {
-	if [[ -e ".server/cloudflared" ]]; then
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${GREEN} Cloudflared already installed." &> /dev/null & spin
-	else
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing Cloudflared..."${WHITE} &> /dev/null & spin
-		arch=`uname -m`
-		if [[ ("$arch" == *'arm'*) || ("$arch" == *'Android'*) ]]; then
-			download_cloudflared 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm'
-		elif [[ "$arch" == *'aarch64'* ]]; then
-			download_cloudflared 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64'
-		elif [[ "$arch" == *'x86_64'* ]]; then
-			download_cloudflared 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64'
-		else
-			download_cloudflared 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386'
-		fi 
-	fi
-
-}
-
-## Exit message
-msg_exit() {
-	{ clear; banner; echo; }
-	echo -e "${GREENBG}${BLACK} Thank you for using this tool. Have a good day.${RESETBG}\n"
-	{ reset_color; exit 0; }
-}
-
-## About
-about() {
-	{ clear; banner; echo; }
-	cat <<- EOF
-		${GREEN}Author   ${RED}:  ${ORANGE}Viraj LR ${RED}[ ${ORANGE}***VLR*** ${RED}]
-		${GREEN}Github   ${RED}:  ${CYAN}https://github.com/VirajLR
-		${GREEN}Version  ${RED}:  ${ORANGE}1.0
-
-		${RED}Warning:${WHITE}
-		${CYAN}This Tool is made for educational purpose only ${RED}!${WHITE}
-		${CYAN}Author will not be responsible for any misuse of this toolkit ${RED}!${WHITE}
-
+					
+ 
 		${RED}[${WHITE}00${RED}]${ORANGE} Main Menu     ${RED}[${WHITE}99${RED}]${ORANGE} Exit
 
 	EOF
-
-	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select an option : ${BLUE}"
+} Select an option : ${BLUE}"
 
 	case $REPLY in 
 		99)
