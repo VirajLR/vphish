@@ -38,9 +38,14 @@ It only demonstrates "how phishing works". <b>You shall not misuse the informati
 $ git clone https://github.com/VirajLR/vphish.git
 ```
 
-- Change to cloned directory and run `vphish.sh` -
+- Change to cloned directory and run `setup.sh` -
 ```
 $ cd vphish
+$ bash setup.sh
+```
+
+- Finally run 👇👇👇 - 
+```
 $ bash vphish.sh
 ```
 
